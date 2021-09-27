@@ -1,0 +1,30 @@
+.menubar {
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+.logout {
+  position: relative;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+}
+
+.logout-btn {
+  visibility: hidden;
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  left: 0;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  background-color: rgb(197, 103, 103);
+  border-radius: 5px;
+}
+
+.logout:hover .logout-btn {
+  visibility: visible;
+}

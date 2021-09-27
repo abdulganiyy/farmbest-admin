@@ -1,0 +1,10 @@
+.public-container {
+  width: 100%;
+  height: 100vh;
+  background-image: url("../../assets/photo-1621849400072-f554417f7051.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

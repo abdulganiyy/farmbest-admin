@@ -1,0 +1,46 @@
+.form-container {
+  width: 30%;
+  display: block;
+  background-color: transparent;
+  padding: 1rem;
+}
+
+.form-group {
+  display: block;
+  width: 100%;
+}
+
+.form-group:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.form-input {
+  display: block;
+  width: 80%;
+  height: 3rem;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  border: none;
+}
+
+.form-input:focus {
+  outline: none;
+}
+
+.form-button {
+  cursor: pointer;
+  border: none;
+  width: 80%;
+  height: 3rem;
+  border-radius: 5px;
+  color: white;
+  background-color: #333;
+  padding: 1rem 2rem;
+  display: block;
+  text-align: center;
+}
+
+.form-button:active,
+.form-button:focus {
+  outline: none;
+}
