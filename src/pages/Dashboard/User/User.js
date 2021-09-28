@@ -23,9 +23,18 @@ const User = ({ match }) => {
   });
 
   React.useEffect(() => {
-    dispatch(fetchUser(match.params.id));
-    setData(user);
-  }, [dispatch]);
+    let isActive = true;
+
+    if (isActive) {
+      dispatch(fetchUser(match.params.id));
+
+      setData(user);
+    }
+
+    return () => {
+      isActive = false;
+    };
+  }, [dispatch, match.params.id, user]);
 
   const onChangeHandler = (e) => {
     console.log(e.target.value);

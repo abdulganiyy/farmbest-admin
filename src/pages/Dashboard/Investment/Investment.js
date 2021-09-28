@@ -24,9 +24,18 @@ const Investment = ({ match }) => {
   });
 
   React.useEffect(() => {
-    dispatch(fetchInvestment(match.params.id));
-    setData(investment);
-  }, [dispatch]);
+    let isActive = true;
+
+    if (isActive) {
+      dispatch(fetchInvestment(match.params.id));
+
+      setData(investment);
+    }
+
+    return () => {
+      isActive = false;
+    };
+  }, [dispatch, match.params.id, investment]);
 
   const onChangeHandler = (e) => {
     console.log(e.target.value);
