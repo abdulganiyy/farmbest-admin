@@ -17,7 +17,7 @@ export const updateUser = createAsyncThunk("user/updateUser", async (data) => {
   };
   const response = await axios.patch(
     `https://farmbest-backend.herokuapp.com/users/${data.id}`,
-    data.data,
+    { ...data.data },
     config
   );
   return response.data;

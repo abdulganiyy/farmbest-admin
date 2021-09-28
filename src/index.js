@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import usersReducer from "./slices/users";
 import investmentsReducer from "./slices/investments";
 import userReducer from "./slices/user";
+import investmentReducer from "./slices/investment";
 
 import authReducer from "./slices/auth";
 
@@ -17,6 +18,7 @@ const reducer = combineReducers({
   userReducer: userReducer,
   authReducer: authReducer,
   investmentsReducer: investmentsReducer,
+  investmentReducer: investmentReducer,
 });
 
 const store = configureStore({

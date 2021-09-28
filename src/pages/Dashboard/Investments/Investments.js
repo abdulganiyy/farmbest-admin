@@ -4,6 +4,8 @@ import InvestmentCard from "../../../components/InvestmentCard/InvestmentCard";
 import { fetchInvestments } from "../../../slices/investments";
 import { useDispatch, useSelector } from "react-redux";
 
+import { Link } from "react-router-dom";
+
 import "./Investments.css";
 
 const Users = () => {
@@ -17,7 +19,9 @@ const Users = () => {
   return (
     <div>
       <div className="create-investment">
-        Create Investment<ion-icon name="create-outline"></ion-icon>
+        <Link to="/dashboard/investment">
+          Create Investment<ion-icon name="create-outline"></ion-icon>
+        </Link>
       </div>
       <div className="investments-wrapper">
         <table className="investments">
@@ -27,6 +31,7 @@ const Users = () => {
             <th>Address</th>
             <th>Units</th>
             <th>Description</th>
+            <th>Edit</th>
           </tr>
           {investments &&
             investments.map((investment) => (

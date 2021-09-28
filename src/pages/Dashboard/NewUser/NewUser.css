@@ -1,0 +1,13 @@
+.createuser-container {
+  padding: 1rem;
+}
+
+.createuser-container .form-label {
+  display: inline-block;
+  padding: 1rem 0;
+  color: #ccc;
+}
+
+.createuser-container .form-button {
+  background: #777;
+}

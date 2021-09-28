@@ -1,13 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
-import { fetchUser, updateUser } from "../../../slices/user";
-import { useDispatch, useSelector } from "react-redux";
+// import { fetchUser, updateUser } from "../../../slices/user";
+// import { useDispatch, useSelector } from "react-redux";
 
-import "./User.css";
+import "./NewUser.css";
 
-const User = ({ match }) => {
-  const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.userReducer);
+const NewUser = () => {
+  //   const dispatch = useDispatch();
+  //   const { user } = useSelector((state) => state.userReducer);
   //   console.log(user);
 
   const [data, setData] = React.useState({
@@ -22,10 +24,10 @@ const User = ({ match }) => {
     role: "",
   });
 
-  React.useEffect(() => {
-    dispatch(fetchUser(match.params.id));
-    setData(user);
-  }, [dispatch]);
+  //   React.useEffect(() => {
+  //     dispatch(fetchUser(match.params.id));
+  //     setData(user);
+  //   }, [dispatch]);
 
   const onChangeHandler = (e) => {
     console.log(e.target.value);
@@ -37,22 +39,43 @@ const User = ({ match }) => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    dispatch(
-      updateUser({
-        id: match.params.id,
-        data,
-      })
-    );
+    const token = localStorage.getItem("token");
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    axios
+      .post("https://farmbest-backend.herokuapp.com/users", data, config)
+      .then((res) => {
+        if (res.data.user) {
+          setData({
+            firstname: "",
+            lastname: "",
+            username: "",
+            email: "",
+            avatar: "",
+            password: "",
+            address: "",
+            occupation: "",
+            role: "",
+          });
+        }
+      });
   };
   return (
     <>
       {data && (
-        <div className="edituser-container">
-          <div>Go Back</div>
-          <div className="edituser">
+        <div className="createuser-container">
+          <div>
+            <Link to="/dashboard">Go Back</Link>
+          </div>
+          <div className="createuser">
             <form className="form" onSubmit={onSubmitHandler}>
               <div className="form-group">
-                <label htmlFor="firstname" className="form-label"></label>
+                <label htmlFor="firstname" className="form-label">
+                  First Name
+                </label>
                 <input
                   id="firstname"
                   type="text"
@@ -63,7 +86,9 @@ const User = ({ match }) => {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="lastname" className="form-label"></label>
+                <label htmlFor="lastname" className="form-label">
+                  Last Name
+                </label>
                 <input
                   id="lastname"
                   type="text"
@@ -74,7 +99,9 @@ const User = ({ match }) => {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="username" className="form-label"></label>
+                <label htmlFor="username" className="form-label">
+                  Username
+                </label>
                 <input
                   id="username"
                   type="text"
@@ -85,7 +112,9 @@ const User = ({ match }) => {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="email" className="form-label"></label>
+                <label htmlFor="email" className="form-label">
+                  Email
+                </label>
                 <input
                   id="email"
                   type="text"
@@ -96,7 +125,9 @@ const User = ({ match }) => {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="password" className="form-label"></label>
+                <label htmlFor="password" className="form-label">
+                  Password
+                </label>
                 <input
                   id="password"
                   type="text"
@@ -107,7 +138,9 @@ const User = ({ match }) => {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="avatar" className="form-label"></label>
+                <label htmlFor="avatar" className="form-label">
+                  My avatar
+                </label>
                 <input
                   id="avatar"
                   type="text"
@@ -119,7 +152,9 @@ const User = ({ match }) => {
               </div>
 
               <div className="form-group">
-                <label htmlFor="address" className="form-label"></label>
+                <label htmlFor="address" className="form-label">
+                  Address
+                </label>
                 <input
                   id="address"
                   type="text"
@@ -130,7 +165,9 @@ const User = ({ match }) => {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="occupation" className="form-label"></label>
+                <label htmlFor="occupation" className="form-label">
+                  Location
+                </label>
                 <input
                   id="occupation"
                   type="text"
@@ -141,7 +178,9 @@ const User = ({ match }) => {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="role" className="form-label"></label>
+                <label htmlFor="role" className="form-label">
+                  Role
+                </label>
                 <input
                   id="role"
                   type="text"
@@ -153,7 +192,7 @@ const User = ({ match }) => {
               </div>
               <div className="form-group">
                 <button type="submit" className="form-button">
-                  update
+                  add
                 </button>
               </div>
             </form>
@@ -164,4 +203,4 @@ const User = ({ match }) => {
   );
 };
 
-export default User;
+export default NewUser;

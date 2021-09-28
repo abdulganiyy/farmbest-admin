@@ -1,6 +1,8 @@
 import React from "react";
 import "./InvestmentCard.css";
 
+import { Link } from "react-router-dom";
+
 const InvestmentCard = ({ investment }) => {
   return (
     <tr>
@@ -9,6 +11,11 @@ const InvestmentCard = ({ investment }) => {
       <td>{investment.address}</td>
       <td>{investment.units}</td>
       <td>{investment.description}</td>
+      <td>
+        <Link to={`/dashboard/investment/${investment._id}`}>
+          <ion-icon name="create-outline"></ion-icon>
+        </Link>
+      </td>
     </tr>
   );
 };

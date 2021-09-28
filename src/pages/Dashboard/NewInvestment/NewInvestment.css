@@ -1,0 +1,9 @@
+.createinvestment-container .form-label {
+  display: inline-block;
+  padding: 1rem 0;
+  color: #ccc;
+}
+
+.createinvestment-container .form-button {
+  background: #777;
+}
